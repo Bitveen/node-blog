@@ -1,11 +1,25 @@
-const fs = require("fs");
-const testData = JSON.parse(fs.readFileSync(__dirname + "/../config/data.json", "utf-8"));
 const moment = require("moment");
-
+const Post = require("../models/post");
 
 module.exports = {
     index(req, res) {
-        res.render("index", { posts: testData });
+
+        let promise = new Promise((resolve, reject) => {
+            Post.find({}, (err, posts) => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
+                resolve(posts);
+            });
+        });
+
+
+        promise.then((posts) => {
+            res.render("index", { posts });
+        }).catch((err) => {
+            console.log(err);
+        });
     },
 
     show(req, res) {
@@ -32,9 +46,15 @@ module.exports = {
 
 
 
+        let post = new Post({ title, content, slug, createdAt });
+        post.save((err) => {
+            if (err) {
+                throw err;
+            }
+            res.redirect("/");
+        });
 
-        // insert into db
-        res.redirect("/");
+
 
     },
 

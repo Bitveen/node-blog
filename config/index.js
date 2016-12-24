@@ -23,5 +23,9 @@ module.exports = (app) => {
 
     app.set("view engine", "handlebars");
 
+    app.set("mongoURL", "mongodb://localhost:27017/blog");
+
+
+
     return app;
 };
