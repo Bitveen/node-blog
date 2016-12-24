@@ -8,6 +8,23 @@
     <link rel="stylesheet" href="/css/foundation.min.css">
 </head>
 <body>
-    {{{ body }}}
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <div class="top-bar-title">
+                <strong><a href="http://localhost:8080">Статьи по Node.js</a></strong>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><input type="search" name="search" placeholder="Введите фразу..."></li>
+                <li><button type="button" class="button">Искать</button></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-centered small-12 medium-6 large-6">
+            {{{ body }}}
+        </div>
+    </div>
 </body>
 </html>

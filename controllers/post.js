@@ -1,6 +1,9 @@
+const fs = require("fs");
+const testData = fs.readFileSync(__dirname + "/../config/data.json", "utf-8");
+
 module.exports = {
     index(req, res) {
-        res.render("index");
+        res.render("index", { posts: JSON.parse(testData) });
     },
 
     show(req, res) {
