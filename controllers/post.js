@@ -4,7 +4,7 @@ module.exports = {
     },
 
     show(req, res) {
-        res.send("Show " + req.params.postId);
+        res.render("show", { postId: req.params.postId });
     },
 
     create(req, res) {
