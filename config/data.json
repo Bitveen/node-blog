@@ -2,21 +2,29 @@
     {
         "id": 1,
         "title": "Первый пост",
-        "content": "Контент первого поста"
+        "content": "Контент первого поста",
+        "slug": "first_post",
+        "createdAt": 3424
     },
     {
         "id": 2,
         "title": "Второй пост",
-        "content": "Контент второго поста"
+        "content": "Контент второго поста",
+        "slug": "second_post",
+        "createdAt": 3424
     },
     {
         "id": 3,
         "title": "Третий пост",
-        "content": "Контент третьего поста"
+        "content": "Контент третьего поста",
+        "slug": "third_post",
+        "createdAt": 3424
     },
     {
         "id": 4,
         "title": "Четвертый пост",
-        "content": "Контент четвертого поста"
+        "content": "Контент четвертого поста",
+        "slug": "fourth_post",
+        "createdAt": 3424
     }
 ]
