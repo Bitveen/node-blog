@@ -1,13 +1,11 @@
 {
   "name": "nodeBlog",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
+  "description": "Blog on Node.js + Express + MongoDB",
+  "main": "server.js",
+  "scripts": {},
+  "keywords": ["js", "node", "mongo"],
+  "author": "Bitveen",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",

@@ -1,19 +1,25 @@
-// Configuration of an Application
+// All application configurations
+
 const path = require("path");
-const routes = require("../routes");
+const postRoutes = require("../routes/postRoutes");
 const handlebars = require("express-handlebars");
 const express = require("express");
 const bodyParser = require("body-parser");
 
-
 module.exports = (app) => {
+
     // Third-party middlewares
     app.use(bodyParser.urlencoded({ extended: false }));
 
-    routes(app);
 
+    // Router
+    app.use(postRoutes);
+
+
+    // Views
     app.use(express.static(path.join(__dirname, "../public")));
 
+    app.set("views", path.join(__dirname, "../views" ));
 
     app.engine("handlebars", handlebars.create({
         defaultLayout: "main",
@@ -23,9 +29,11 @@ module.exports = (app) => {
 
     app.set("view engine", "handlebars");
 
-    app.set("mongoURL", "mongodb://localhost:27017/blog");
 
-
-
+    // Database settings and connection
+    require("./database");
+    
     return app;
 };
+
+

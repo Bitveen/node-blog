@@ -1,0 +1,1 @@
+### Простой блог с использованием Node.js (некоторые фичи ES2015), Express, MongoDB (Mongoose).
