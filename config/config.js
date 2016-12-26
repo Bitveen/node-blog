@@ -1,19 +1,19 @@
 // All application configurations
 
 const path = require("path");
-const postRoutes = require("../routes/postRoutes");
+const postRouter = require("../routes/post");
 const handlebars = require("express-handlebars");
 const express = require("express");
 const bodyParser = require("body-parser");
 
 module.exports = (app) => {
 
-    // Third-party middlewares
+    // Third-party middleware
     app.use(bodyParser.urlencoded({ extended: false }));
 
 
     // Router
-    app.use(postRoutes);
+    app.use(postRouter);
 
 
     // Views
@@ -32,8 +32,6 @@ module.exports = (app) => {
 
     // Database settings and connection
     require("./database");
-    
+
     return app;
 };
-
-

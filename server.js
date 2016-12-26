@@ -1,6 +1,6 @@
 // Application entry point
 const express = require("express");
-const config = require("./config");
+const config = require("./config/config.js");
 let app = express();
 
 app.set("port", process.env.PORT || 8080);
