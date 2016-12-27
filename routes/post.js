@@ -1,47 +1,67 @@
 const express = require("express");
+const passport = require("passport");
 const router = express.Router();
-const moment = require("moment");
+const Post = require("../models/post");
+const User = require("../models/user");
 
-/* Роут для индексной страницы, где отображаются все посты */
+
+
 router.get("/", (req, res) => {
-    let promise = new Promise((resolve, reject) => {
-        Post.find({}, (err, posts) => {
-            if (err) {
-                reject(err);
-            }
-            resolve(posts);
-        }).sort({ createdAt: -1 });
-    });
-    promise.then((posts) => {
-        res.render("index", { posts });
-    }).catch((err) => {
-        console.log(err);
+    Post.find({}, (err, posts) => {
+        if (err) {
+            throw err;
+        }
+        res.render("index", { posts: posts, user: req.user });
+    }).sort({ createdAt: -1 });
+});
+
+router.get("/register", (req, res) => {
+    res.render("register", {});
+});
+router.post("/register", (req, res) => {
+    User.register(new User({ username: req.body.username}), req.body.password, (err, user) => {
+        if (err) {
+            return res.render("register", { user: user });
+        }
+        passport.authenticate("local")(req, res, () => {
+            res.redirect("/");
+        });
     });
 });
 
-/* Роут для отображения формы добавления статьи */
+router.get("/login", (req, res) => {
+    res.render("login", { user: req.user });
+});
+
+router.post("/login", passport.authenticate("local"), (req, res) => {
+    res.redirect("/");
+});
+
+
+router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+});
+
 router.get("/post/create", (req, res) => {
-    res.render("create");
+    res.render("create", { user: req.user });
 });
 
-/* Роут для отображения отдельной статьи */
 router.get("/post/:postSlug", (req, res) => {
-    res.render("show");
+    res.render("show", { user: req.user });
 });
 
-/* Роут для создания новой статьи */
+
 router.post("/post", (req, res) => {
     let {title, content, slug} = req.body;
-    let createdAt = moment().unix();
+
 
     if (!title || !content || !slug) {
-        res.locals.postError = true;
         return res.redirect("back");
     }
 
 
-    let newPost = new Post({ title, content, slug, createdAt });
-    newPost.save((err) => {
+    new Post({ title, content, slug }).save((err) => {
         if (err) {
             throw err;
         }
@@ -49,12 +69,12 @@ router.post("/post", (req, res) => {
     });
 });
 
-/* Роут для обновления существующей статьи */
+
 router.post("/post/:postId", (req, res) => {
 
 });
 
-/* Роут для удаления статьи */
+
 router.delete("/post/:postId", (req, res) => {
 
 });

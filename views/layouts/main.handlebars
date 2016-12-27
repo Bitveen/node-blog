@@ -14,7 +14,9 @@
             <ul class="menu">
                 <li class="menu-text">Блог</li>
                 <li><a href="/">Все статьи</a></li>
-                <li><a href="/post/create">Создать новую статью</a></li>
+                {{#if user }}
+                    <li><a href="/post/create">Создать новую статью</a></li>
+                {{/if}}
             </ul>
         </div>
         <div class="top-bar-right">
