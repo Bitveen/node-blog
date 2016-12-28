@@ -10,7 +10,8 @@ const flash = require("express-flash");
 const session = require("express-session");
 const User = require("./models/user");
 
-const routes = require("./routes/post");
+const router = require("./routes");
+
 
 const app = express();
 
@@ -45,7 +46,7 @@ passport.deserializeUser(User.deserializeUser());
 
 
 
-app.use(routes);
+app.use(router);
 
 
 

@@ -1,19 +1,9 @@
 <div class="callout main-content">
     <h3 class="text-center">Новая статья</h3>
-
-    {{#if postError }}
-        <div class="callout alert">
-            <p>Возникла ошибка при создании статьи.</p>
-        </div>
-    {{/if}}
     <form action="/post" method="post">
         <label>
             Название:
             <input type="text" name="title" placeholder="Название статьи">
-        </label>
-        <label>
-            Ссылка латиницей, например <strong>my_post_name</strong>:
-            <input type="text" name="slug" placeholder="Ссылка на статью">
         </label>
         <label>
             Контент:

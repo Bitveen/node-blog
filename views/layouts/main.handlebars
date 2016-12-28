@@ -5,31 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Блог</title>
-    <link rel="stylesheet" href="/css/foundation.min.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <ul class="menu">
-                <li class="menu-text">Блог</li>
-                <li><a href="/">Все статьи</a></li>
-                {{#if user }}
-                    <li><a href="/post/create">Создать новую статью</a></li>
-                {{/if}}
-            </ul>
+    <header class="top-header">
+        <div class="container">
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__item"><a href="/">Статьи</a></li>
+                    <li class="menu__item"><a href="/books">Книги</a></li>
+                    <li class="menu__item"><a href="/about">Обо мне</a></li>
+                    <li class="menu__item"><a href="/portfolio">Портфолио</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="top-bar-right">
-            <ul class="menu">
-                <li><input type="search" name="search" placeholder="Введите фразу..."></li>
-                <li><button type="button" class="button">Искать</button></li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="small-centered small-12 medium-6 large-6">
-            {{{ body }}}
-        </div>
+        
+    </header>
+    <div class="container">
+        {{{ body }}}
     </div>
 </body>
 </html>

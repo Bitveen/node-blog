@@ -1,16 +1,24 @@
-<div>
-    <h3 class="text-center page-title">Все статьи</h3>
-    {{#if posts}}
-        {{#each posts}}
-            <div class="callout">
-                <h3>{{title}}</h3>
-                <p>{{content}}</p>
-                <a href="/post/{{slug}}">Подробнее</a>
-            </div>
-        {{/each }}
-    {{else}}
-        <div class="callout secondary">
-            <h3 class="text-center">На данный момент нет ни одной статьи.</h3>
+<div class="row">
+    <div class="articles">
+        {{#if posts}}
+            {{#each posts}}
+                <article class="article">
+                    <h3 class="article__title"><a href="/post/{{id}}">{{title}}</a></h3>
+                    <span class="article__pub-date">Опубликовано <strong>{{createdAt}}</strong></span>
+                    <div class="article__poster"></div>
+                </article>
+            {{/each }}
+        {{else}}
+        {{/if}}
+    </div>
+    <div class="sidebar">
+        <div class="search">
+            <h3 class="block-title">Поиск</h3>
+            <form action="/posts/search" method="post">
+                <input type="text" class="search__input" name="q" placeholder="Введите фразу для поиска...">
+                <button type="submit" class="search__button">Искать</button>
+            </form>
         </div>
-    {{/if}}
+    </div>
 </div>
+

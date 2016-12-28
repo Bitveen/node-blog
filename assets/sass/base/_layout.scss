@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #f6f6f6;
+}
+
+
+.top-header {
+    height: 100px;
+    background-color: $top-header-bg-color;
+    box-shadow: 0 0 8px 2px rgba(0,0,0, .5);
+}
+
+.container{
+    width: 960px;
+    margin: 0 auto;
+}
+.row {
+    @include clearfix();
+}
+

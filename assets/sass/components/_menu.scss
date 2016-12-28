@@ -1,0 +1,25 @@
+.menu {
+    @include clearfix();
+    display: inline-block;
+    float: right;
+    &__list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    &__item {
+        display: inline-block;
+        line-height: 100px;
+        margin-left: 15px;
+        a {
+            color: $menu-link-color;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            &:hover {
+                color: darken($menu-link-color, 10%);
+            }
+        }
+    }
+    
+}
