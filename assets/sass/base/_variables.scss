@@ -1,7 +1,18 @@
+// Font
+$main-font-family: 'PT Sans', sans-serif;
+
+// Size
+$top-header-size: 100px;
+$container-size: 960px;
+
+
 // Colors
 $dark-grey: #212121;
 $light-grey: #EEEEEE;
 
+
+// Html
+$main-bg-color: #f6f6f6;
 
 // Top-header
 $top-header-bg-color: $dark-grey;
@@ -9,6 +20,13 @@ $top-header-bg-color: $dark-grey;
 // Menu
 $menu-link-color: $light-grey;
 
-
 // Article
 $article-text-color: $dark-grey;
+$article-bg-color: #fff;
+$article-padding-size: 10px;
+
+
+// Sidebar
+
+$sidebar-bg-color: #fff;
+$sidebar-padding-size: 10px;

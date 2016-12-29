@@ -9,9 +9,9 @@ const LocalStrategy = require("passport-local").Strategy;
 const flash = require("express-flash");
 const session = require("express-session");
 const User = require("./models/user");
-
+const moment = require("moment");
 const router = require("./routes");
-
+moment.locale("ru");
 
 const app = express();
 
@@ -58,7 +58,12 @@ app.use(express.static(path.join(__dirname, "./public")));
 app.engine("handlebars", handlebars.create({
     defaultLayout: "main",
     layoutsDir: app.get("views") + "/layouts",
-    partialsDir: app.get("views") + "/partials"
+    partialsDir: app.get("views") + "/partials",
+    helpers: {
+        makeDate(date) {
+            return moment(date).format("LLL");
+        }
+    }
 }).engine);
 
 

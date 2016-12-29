@@ -5,3 +5,17 @@
         clear: both;
     }
 }
+
+@mixin make-shadow($opacity) {
+    box-shadow: 0 0 8px 2px rgba(0,0,0, $opacity);
+}
+
+
+@mixin float-left($size) {
+    width: $size;
+    float: left;
+}
+@mixin float-right($size) {
+    width: $size;
+    float: right;
+}

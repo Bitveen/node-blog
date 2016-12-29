@@ -1,14 +1,13 @@
-<div class="callout">
-    <h3>Вход на сайт</h3>
-    <form action="/login" method="post">
-        <label>
-            Логин
-            <input type="text" name="username" placeholder="Ваш логин">
-        </label>
-        <label>
-            Пароль
-            <input type="password" name="password" placeholder="Ваш пароль">
-        </label>
-        <button type="submit" class="button hollow">Войти</button>
+<div class="login-form">
+    <form action="/login" method="post" class="form">
+        <div class="form__row">
+            <label for="username" class="form__label">Логин:</label>
+            <input type="text" name="username" class="form__input" id="username" placeholder="Ваш логин">
+        </div>
+        <div class="form-row">
+            <label for="password" class="form__label">Пароль:</label>
+            <input type="password" name="password" class="form__input" id="password" autocomplete="false" placeholder="Ваш пароль">
+        </div>
+        <button type="submit" class="form__button">Войти</button>
     </form>
 </div>

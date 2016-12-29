@@ -1,0 +1,20 @@
+.admin-posts {
+    margin-top: 50px;
+    margin-left: 30px;
+    @include float-right(600px);
+    @include make-shadow(.25);
+    background-color: #fff;
+    height: 300px;
+    padding: 10px;
+}
+.table {
+    border: 1px solid #eee;
+    width: 100%;
+    td, th {
+        font-size: .95rem;
+        text-align: left;
+    }
+    tr:hover {
+        background-color: #f6f6f6;
+    }
+}

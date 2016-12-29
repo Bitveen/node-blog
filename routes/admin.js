@@ -4,10 +4,6 @@ const router = express.Router();
 const auth = require("../middlewares/auth");
 const Post = require("../models/post");
 
-router.use((req, res, next) => {
-    res.locals.layout = "admin";
-    next();
-});
 
 
 
@@ -19,7 +15,7 @@ router.get("/posts", auth, (req, res) => {
         }
 
         res.render("admin/index", { posts: posts });
-    }); 
+    });
 });
 
 router.get("/posts/create", (req, res) => {
