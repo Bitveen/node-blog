@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+
+
 const PostSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -12,9 +14,10 @@ const PostSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    tags: [{
-        title: String
-    }]
+    poster: {
+        type: String,
+        required: true
+    }
 });
 
 

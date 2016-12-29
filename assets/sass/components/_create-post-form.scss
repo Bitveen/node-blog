@@ -1,0 +1,8 @@
+.create-post {
+    margin-top: 50px;
+    margin-left: 30px;
+    @include float-right(600px);
+    @include make-shadow(.25);
+    background-color: #fff;
+    padding: 10px;
+}

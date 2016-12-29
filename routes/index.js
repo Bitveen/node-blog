@@ -1,12 +1,32 @@
 const express = require("express");
-const passport = require("passport");
 const router = express.Router();
 const Post = require("../models/post");
-const auth = require("./auth");
-const admin = require("./admin");
 
+
+
+router.get("/posts/:postId", (req, res) => {
+    Post.findOne({ _id: req.params.postId }, (err, post) => {
+        if (err) {
+            throw err;
+        }
+        res.render("show", { post: post });
+    })
+});
+
+router.get("/books", (req, res) => {
+    res.render("books");
+});
+
+router.get("/about", (req, res) => {
+    res.render("about");
+});
+
+router.get("/portfolio", (req, res) => {
+    res.render("portfolio");
+});
 
 router.get("/", (req, res) => {
+    res.locals.pageTitle = "Статьи";
     Post.find({}, (err, posts) => {
         if (err) {
             throw err;
@@ -15,8 +35,6 @@ router.get("/", (req, res) => {
     }).sort({ createdAt: -1 });
 });
 
-router.use("/admin", admin);
-router.use(auth);
 
 
 
@@ -71,14 +89,7 @@ router.use(auth);
 // });
 
 
-// router.post("/post/:postId", (req, res) => {
 
-// });
-
-
-// router.delete("/post/:postId", (req, res) => {
-
-// });
 
 
 module.exports = router;

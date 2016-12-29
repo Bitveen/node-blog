@@ -1,0 +1,6 @@
+.post {
+    margin-top: 50px;
+    @include make-shadow(.25);
+    background-color: #fff;
+    padding: 10px;
+}

@@ -25,3 +25,12 @@ html, body {
 .row {
     @include clearfix();
 }
+
+.footer {
+    height: 200px;
+    p {
+        text-align: center;
+        line-height: 200px;
+        margin: 0;
+    }
+}

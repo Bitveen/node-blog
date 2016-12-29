@@ -1,14 +1,21 @@
-<div class="callout main-content">
-    <h3 class="text-center">Новая статья</h3>
-    <form action="/post" method="post">
-        <label>
-            Название:
-            <input type="text" name="title" placeholder="Название статьи">
-        </label>
-        <label>
-            Контент:
-            <textarea name="content" placeholder="Контент статьи" rows="10"></textarea>
-        </label>
-        <button type="submit" class="button">Создать</button>
-    </form>
+<div class="row">
+    {{>adminMenu}}
+    <div class="create-post">
+        <h3>Новая статья</h3>
+        <form action="/admin/posts/create" method="post" class="form" enctype="multipart/form-data">
+            <div class="form__row">
+                <label for="title" class="form__label">Название:</label>
+                <input type="text" name="title" class="form__input" id="title" placeholder="Название статьи">
+            </div>
+            <div class="form-row">
+                <label for="content" class="form__label">Контент:</label>
+                <textarea name="content" class="form__input" id="content" placeholder="Контент статьи" rows="20"></textarea>
+            </div>
+            <div class="form-row">
+                <label for="content" class="form__label">Постер:</label>
+                <input type="file" name="poster" />
+            </div>
+            <button type="submit" class="form__button">Создать</button>
+        </form>
+    </div>
 </div>

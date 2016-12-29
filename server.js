@@ -1,32 +1,36 @@
 const express = require("express");
-const path = require("path");
+const passport = require("passport");
+const User = require("./models/user");
+const LocalStrategy = require("passport-local").Strategy;
 const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
 const flash = require("express-flash");
 const session = require("express-session");
-const User = require("./models/user");
 const moment = require("moment");
-const router = require("./routes");
-moment.locale("ru");
+const path = require("path");
 
 const app = express();
 
 
+const authRouter = require("./routes/auth");
+const adminRouter = require("./routes/admin");
+const indexRouter = require("./routes/index");
 
+moment.locale("ru");
+
+
+
+
+// Application level constants
 app.set("port", process.env.PORT || 8080);
 app.set("views", path.join(__dirname, "./views" ));
 app.set("view engine", "handlebars");
 
 
 
-require("./config/database");
-
-
-
+// Middleware
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,19 +41,22 @@ app.use(session({
     saveUninitialized: false
 }));
 app.use(flash());
+
+
+// Auth
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
-
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
 
-app.use(router);
 
-
-
+// Routes
+app.use("/admin", adminRouter);
+app.use(indexRouter);
+app.use(authRouter);
 
 
 
@@ -60,18 +67,11 @@ app.engine("handlebars", handlebars.create({
     layoutsDir: app.get("views") + "/layouts",
     partialsDir: app.get("views") + "/partials",
     helpers: {
-        makeDate(date) {
+        formatDate(date) {
             return moment(date).format("LLL");
         }
     }
 }).engine);
-
-
-
-
-
-
-
 
 
 
@@ -102,7 +102,7 @@ app.use((err, req, res, next) => {
 });
 
 
-
+require("./config/database");
 
 
 app.listen(app.get("port"), () => console.log("Server started..."));
